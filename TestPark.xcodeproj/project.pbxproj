@@ -15,6 +15,8 @@
 		6849B5671EB0CFC600CC58CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6849B5651EB0CFC600CC58CD /* LaunchScreen.storyboard */; };
 		6849B5721EB0CFC600CC58CD /* TestParkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6849B5711EB0CFC600CC58CD /* TestParkTests.swift */; };
 		6849B57D1EB0CFC600CC58CD /* TestParkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6849B57C1EB0CFC600CC58CD /* TestParkUITests.swift */; };
+		6869DF6A1EB759A40015571F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6869DF691EB759A40015571F /* MainViewController.swift */; };
+		6869DF6C1EB759DF0015571F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6869DF6B1EB759DF0015571F /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,11 @@
 		6849B5781EB0CFC600CC58CD /* TestParkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestParkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6849B57C1EB0CFC600CC58CD /* TestParkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestParkUITests.swift; sourceTree = "<group>"; };
 		6849B57E1EB0CFC600CC58CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6869DF691EB759A40015571F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6869DF6B1EB759DF0015571F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		68CC42411EB39BF4003B5EEC /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		68CC42431EB39C53003B5EEC /* SwiftyJSON-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SwiftyJSON-master"; path = "../../SwiftyJSON-master"; sourceTree = "<group>"; };
+		68CC42451EB39D0E003B5EEC /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = TestPark/SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +86,12 @@
 		6849B5501EB0CFC600CC58CD = {
 			isa = PBXGroup;
 			children = (
+				68CC42451EB39D0E003B5EEC /* SwiftyJSON.swift */,
 				6849B55B1EB0CFC600CC58CD /* TestPark */,
 				6849B5701EB0CFC600CC58CD /* TestParkTests */,
 				6849B57B1EB0CFC600CC58CD /* TestParkUITests */,
 				6849B55A1EB0CFC600CC58CD /* Products */,
+				68CC42401EB39BF4003B5EEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +110,8 @@
 			children = (
 				6849B55C1EB0CFC600CC58CD /* AppDelegate.swift */,
 				6849B55E1EB0CFC600CC58CD /* ViewController.swift */,
+				6869DF691EB759A40015571F /* MainViewController.swift */,
+				6869DF6B1EB759DF0015571F /* LoginViewController.swift */,
 				6849B5601EB0CFC600CC58CD /* Main.storyboard */,
 				681B36501EB0F25200EA279C /* sfondo.jpeg */,
 				6849B5631EB0CFC600CC58CD /* Assets.xcassets */,
@@ -126,6 +137,15 @@
 				6849B57E1EB0CFC600CC58CD /* Info.plist */,
 			);
 			path = TestParkUITests;
+			sourceTree = "<group>";
+		};
+		68CC42401EB39BF4003B5EEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68CC42431EB39C53003B5EEC /* SwiftyJSON-master */,
+				68CC42411EB39BF4003B5EEC /* SwiftyJSON.swift */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +284,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6869DF6C1EB759DF0015571F /* LoginViewController.swift in Sources */,
+				6869DF6A1EB759A40015571F /* MainViewController.swift in Sources */,
 				6849B55F1EB0CFC600CC58CD /* ViewController.swift in Sources */,
 				6849B55D1EB0CFC600CC58CD /* AppDelegate.swift in Sources */,
 			);

@@ -39,6 +39,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+    
     func showAlert(message : String) {
         let alert = UIAlertController(title: "Ops", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: {
@@ -116,8 +127,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if (error != nil) {
                 print(error!)
             } else {
-                let httpResponse = String(data :data!, encoding: .utf8)
+                let httpResponse = String(data :data!,encoding : .utf8)
                 print(httpResponse!)
+                let dict = self.convertToDictionary(text: httpResponse!)
+                print(dict!["token"] ?? "token non trovato")
             }
         })
         
