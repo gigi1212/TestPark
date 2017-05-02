@@ -50,25 +50,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return nil
     }
     
-    func showAlert(message : String) {
-        let alert = UIAlertController(title: "Ops", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: {
-            (alertAction: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion:nil)
-    }
-    
-    func showSucc() {
-        let alert = UIAlertController(title: "Form valida", message: "invio in corso", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: {
-            (alertAction: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true, completion:nil)
-    }
-    func showBad() {
-        let alert = UIAlertController(title: "Errore", message: "Compila prima la form", preferredStyle: .alert)
+    func showAlert(title:String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: {
             (alertAction: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
@@ -108,35 +91,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     dataTask.resume()
     }
-    
-    func chiediToken(user : String, psswd : String) {
-        let headers = [
-            "user": user,
-            "pswd": psswd,
-            "cache-control": "no-cache"
-        ]
-        
-        var request = URLRequest(url: NSURL(string: "http://nicholasgiordano.it:3005/user/token")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error!)
-            } else {
-                let httpResponse = String(data :data!,encoding : .utf8)
-                print(httpResponse!)
-                let dict = self.convertToDictionary(text: httpResponse!)
-                print(dict!["token"] ?? "token non trovato")
-            }
-        })
-        
-        dataTask.resume()
-    }
-    
     @IBAction func invio(_ sender: UIButton) {
         var stringa = "Form non valida : \n"
         var generale = 1;
@@ -177,25 +131,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
             generale = 0;
         }
         if (generale == 0) {
-            showAlert(message:stringa)
+            DispatchQueue.main.async {
+                self.showAlert(title: "Ops", message:stringa)
+
+            }
         }
         else {
-            showSucc()
+            DispatchQueue.main.async {
+                self.showAlert(title:"Form valida", message:"Registrazione in corso")
+            }
             send(user: usernameText.text!, psswd: passwordText.text!, mail: emailText.text!)
-            
         }
         
     }
-    @IBAction func reqToken(_ sender: Any) {
-        if (self.inviata == 0) {
-            showBad()
-        }
-        else {
-            chiediToken(user: usernameText.text!, psswd: passwordText.text!)
-        }
-    }
     
-    //gigi gay
+    
 }
 
 

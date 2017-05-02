@@ -38,8 +38,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return nil
     }
     
-    func showError() {
-        let alert = UIAlertController(title: "Errore", message: "Username e password non validi", preferredStyle: .alert)
+    func showError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: {
             (alertAction: UIAlertAction!) in
             self.dismiss(animated: true, completion: nil)
@@ -71,11 +71,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let test : Bool = dict!["result"]! as! Bool
                 if (!test) {
                     print("ciao")
-                    self.showError()
+                    DispatchQueue.main.async {
+                        self.showError(title: "Errore",message: "username e password non coincidono")
+                    }
                 }
                 else {
-                    self.token = dict!["token"]! as? String
-                    print(self.token!)
+                    DispatchQueue.main.async {
+                        self.showError(title: "Grazie",message: "Login Effettuato")
+                        self.token = dict!["token"]! as? String
+                        self.performSegue(withIdentifier: "backToMainController", sender: nil)
+                    //print(self.token!)
+                    }
                 }
             }
         })
